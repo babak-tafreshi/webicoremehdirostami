@@ -4,7 +4,6 @@ import SEOHead from "@/components/SEOHead";
 import Section from "@/components/ui/Section";
 import AudioPlayer from "@/components/AudioPlayer";
 import ImageGrid from "@/components/ImageGrid";
-import ContactForm from "@/components/ContactForm";
 import {
   heroContent,
   aboutContent,
@@ -127,15 +126,30 @@ const Index = () => {
 
       {/* Quote Section */}
       <Section showDivider={true}>
-        <h2 className="heading-md text-center">{quoteHeading}</h2>
+        <h2 className="heading-md text-center mb-8">{quoteHeading}</h2>
+        <div className="max-w-2xl mx-auto">
+          <div className="aspect-video">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/kfQF6fF4kRI"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="rounded-lg"
+            />
+          </div>
+        </div>
       </Section>
 
       {/* Contact Section */}
       <Section id="contact" title="Contact" showDivider={false}>
-        <p className="body-text text-center mb-8">
-          Email: <a href={`mailto:${siteConfig.email}`} className="text-foreground hover:text-primary transition-colors">{siteConfig.email}</a>
+        <p className="body-text text-center text-lg">
+          <a href={`mailto:${siteConfig.email}`} className="text-primary hover:text-primary/80 transition-colors font-semibold break-all">
+            {siteConfig.email}
+          </a>
         </p>
-        <ContactForm />
       </Section>
     </>
   );

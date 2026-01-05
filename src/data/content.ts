@@ -10,7 +10,7 @@ export const siteConfig = {
 export const heroContent = {
   title: "Mehdi Rostami",
   subtitle: "Professinal Musician and Setar Player",
-  trackDuration: "02:18",
+  trackDuration: "03:45",
 };
 
 export const aboutContent = {

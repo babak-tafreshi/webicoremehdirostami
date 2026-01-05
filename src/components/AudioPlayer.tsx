@@ -79,7 +79,7 @@ const AudioPlayer = ({ trackDuration = "02:18" }: AudioPlayerProps) => {
 
   return (
     <div className="w-full max-w-md mx-auto">
-      <audio ref={audioRef} src="/audio/sample.mp3" preload="metadata" />
+      <audio ref={audioRef} src="/Audio/Sample.mp3" preload="metadata" />
       
       <div className="flex items-center gap-4">
         {/* Play/Pause Button */}

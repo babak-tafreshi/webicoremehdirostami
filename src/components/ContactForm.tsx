@@ -38,18 +38,37 @@ const ContactForm = () => {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     
-    // Simulate API call - replace with actual backend integration
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    
-    console.log("Form submitted:", data);
-    
-    toast({
-      title: "Message sent!",
-      description: "Thank you for your message. I will get back to you soon.",
-    });
-    
-    reset();
-    setIsSubmitting(false);
+    try {
+      const response = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          message: data.message,
+        }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message sent!",
+          description: "Thank you for your message. I will get back to you soon.",
+        });
+        reset();
+      } else {
+        throw new Error("Form submission failed");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast({
+        title: "Error sending message",
+        description: "Something went wrong. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
